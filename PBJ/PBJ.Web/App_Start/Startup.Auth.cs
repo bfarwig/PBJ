@@ -17,16 +17,16 @@ namespace PBJ.Web
 {
     public partial class Startup
     {
-        private static string clientId = ConfigurationManager.AppSettings["ida:ClientId"];
-        private static string appKey = ConfigurationManager.AppSettings["ida:ClientSecret"];
-        private static string aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];
-        private static string tenantId = ConfigurationManager.AppSettings["ida:TenantId"];
-        private static string postLogoutRedirectUri = ConfigurationManager.AppSettings["ida:PostLogoutRedirectUri"];
+        private static readonly string _clientId = ConfigurationManager.AppSettings["ida:ClientId"];
+        private static readonly string _appKey = ConfigurationManager.AppSettings["ida:ClientSecret"];
+        private static readonly string _aadInstance = ConfigurationManager.AppSettings["ida:AADInstance"];
+        private static readonly string _tenantId = ConfigurationManager.AppSettings["ida:TenantId"];
+        private static readonly string _postLogoutRedirectUri = ConfigurationManager.AppSettings["ida:PostLogoutRedirectUri"];
 
-        public static readonly string Authority = aadInstance + tenantId;
+        public static readonly string Authority = _aadInstance + _tenantId;
 
         // This is the resource ID of the AAD Graph API.  We'll need this to request a token to call the Graph API.
-        string graphResourceId = "https://graph.windows.net";
+       // string graphResourceId = "https://graph.windows.net";
 
         public void ConfigureAuth(IAppBuilder app)
         {
@@ -39,9 +39,9 @@ namespace PBJ.Web
             app.UseOpenIdConnectAuthentication(
                 new OpenIdConnectAuthenticationOptions
                 {
-                    ClientId = clientId,
+                    ClientId = _clientId,
                     Authority = Authority,
-                    PostLogoutRedirectUri = postLogoutRedirectUri,
+                    PostLogoutRedirectUri = _postLogoutRedirectUri,
 
                     Notifications = new OpenIdConnectAuthenticationNotifications()
                     {
@@ -49,8 +49,9 @@ namespace PBJ.Web
                        AuthorizationCodeReceived = (context) => 
                        {
                            var code = context.Code;
-                           ClientCredential credential = new ClientCredential(clientId, appKey);
-                           string signedInUserID = context.AuthenticationTicket.Identity.FindFirst(ClaimTypes.NameIdentifier).Value;
+                           ClientCredential credential = new ClientCredential(_clientId, _appKey);
+                           string signedInUserId = context.AuthenticationTicket.Identity.FindFirst(ClaimTypes.NameIdentifier).Value;
+                           // TODO save token
                            //AuthenticationContext authContext = new AuthenticationContext(Authority, new ADALTokenCache(signedInUserID));
                            //AuthenticationResult result = authContext.AcquireTokenByAuthorizationCode(
                            //code, new Uri(HttpContext.Current.Request.Url.GetLeftPart(UriPartial.Path)), credential, graphResourceId);

@@ -10,6 +10,7 @@ namespace PBJ.Web
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+
         }
     }
 }

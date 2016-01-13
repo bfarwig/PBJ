@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PBJ.Repository
+namespace PBJ.Core.DTO
 {
-    public class Class1
+    public class Client
     {
     }
 }

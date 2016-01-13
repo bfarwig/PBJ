@@ -13,6 +13,9 @@ namespace PBJ.Web
     {
         protected void Application_Start()
         {
+            // Register Inversion of Control dependencies
+            AutofacConfig.ConfigureContainer();
+
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
