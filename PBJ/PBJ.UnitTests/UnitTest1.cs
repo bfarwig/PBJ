@@ -6,11 +6,6 @@ namespace PBJ.UnitTests
     [TestFixture]
     public class SampleTest
     {
-        [SetUp]
-        public void Init()
-        {
-            
-        }
 
         [Test]
         public void TestMethod1()

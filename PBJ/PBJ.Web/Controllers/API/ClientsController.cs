@@ -12,13 +12,13 @@ namespace PBJ.Web.Controllers.API
 {
     public class ClientsController : ApiController
     {
-        private IClientRepository _clientRepo;
+        private readonly IClientRepository _clientRepo;
         public ClientsController(IClientRepository clientRepo)
         {
             _clientRepo = clientRepo;
         }
 
-        // GET: api/Employees/5
+        // GET: api/Clients/5
         [ResponseType(typeof(Client))]
         public IHttpActionResult GetClient(int id)
         {

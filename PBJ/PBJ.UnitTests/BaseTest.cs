@@ -1,12 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Web.Http;
+using Autofac;
+using NUnit.Framework;
+using PBJ.Web;
 
 namespace PBJ.UnitTests
 {
-    abstract class BaseTest
+    [TestFixture]
+    public abstract class BaseTest
     {
+        private IContainer _container;
+        public IContainer Container
+        {
+            get { return _container; }
+            set { _container = value; }
+        }
+
+        [SetUp]
+        public void Init()
+        {
+        //    GlobalConfiguration.Configure(WebApiConfig.Register);
+            Container = AutofacConfig.ConfigureContainer();
+        }
     }
 }

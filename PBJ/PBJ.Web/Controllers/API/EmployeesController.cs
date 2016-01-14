@@ -15,7 +15,7 @@ namespace PBJ.Web.Controllers.API
 {
     public class EmployeesController : ApiController
     {
-        private Context db = new Context();
+        private readonly Context db;
 
         // GET: api/Employees
         public IQueryable<Employee> GetEmployees()
