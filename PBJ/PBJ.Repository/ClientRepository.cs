@@ -24,7 +24,8 @@ namespace PBJ.Repository
 
         public Client Get(int studentId)
         {
-            throw new NotImplementedException();
+            // todo setup context
+            return new Client() {Id = 1, Name = "test"};
         }
 
         public void Insert(Client student)
@@ -48,7 +49,7 @@ namespace PBJ.Repository
         }
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _context.Dispose();
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Reflection;
 using System.Threading.Tasks;
+using Autofac;
 using Microsoft.Owin;
 using Owin;
 

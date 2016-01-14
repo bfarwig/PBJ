@@ -1,12 +1,10 @@
-﻿using Autofac;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Web;
+﻿using System.Data.Entity;
+using Autofac;
+using Autofac.Integration.Mvc;
 using PBJ.Core.DTO;
 using PBJ.Core.Interfaces;
 using PBJ.Repository;
+using PBJ.Repository.Entities;
 using Module = Autofac.Module;
 
 namespace PBJ.Web
@@ -23,6 +21,7 @@ namespace PBJ.Web
             //   .Where(t => t.Name.EndsWith("Repository"))
             //   .AsImplementedInterfaces();
 
+            builder.RegisterType<Context>().As<DbContext>();
             builder.RegisterType<ClientRepository>().As<IClientRepository>();
             builder.RegisterType<EmployeeRepository>().As<IRepository<Employee>>();
 

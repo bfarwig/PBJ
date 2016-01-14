@@ -9,5 +9,6 @@ namespace PBJ.Repository.Entities
 {
     public class Context : DbContext
     {
+        public System.Data.Entity.DbSet<PBJ.Core.DTO.Employee> Employees { get; set; }
     }
 }

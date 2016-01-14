@@ -4,11 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PBJ.Core.DTO
+namespace PBJ.UnitTests
 {
-    public class Employee
+    abstract class BaseTest
     {
-        public int Id { get; set; }
-        public string FirstName { get; set; }
     }
 }

@@ -102,6 +102,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="BaseTest.cs" />
     <Compile Include="DependencyResolver\GlobalModule.cs" />
     <Compile Include="SpecFlow\Feature\Example.feature.cs">
       <AutoGen>True</AutoGen>

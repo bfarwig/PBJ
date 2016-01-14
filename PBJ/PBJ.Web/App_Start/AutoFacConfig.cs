@@ -1,6 +1,9 @@
-﻿using System.Web.Mvc;
+﻿using System.Reflection;
+using System.Web.Http;
+using System.Web.Mvc;
 using Autofac;
 using Autofac.Integration.Mvc;
+using Autofac.Integration.WebApi;
 
 namespace PBJ.Web
 {
@@ -13,6 +16,7 @@ namespace PBJ.Web
 
             // Register dependencies in controllers
             builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterApiControllers(Assembly.GetExecutingAssembly());
 
             // Register dependencies in filter attributes
             builder.RegisterFilterProvider();
@@ -27,6 +31,7 @@ namespace PBJ.Web
 
             // Set MVC DI resolver to use our Autofac container
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            GlobalConfiguration.Configuration.DependencyResolver = new AutofacWebApiDependencyResolver(container);
         }
     }
 }
